@@ -10,11 +10,11 @@ description: No-cost awareness and research for families of the missing and murd
 # If the repo is named YOUR-USERNAME.github.io, set baseurl to ""
 # If the repo has another name (e.g. thunder-street-ministry), set baseurl to "/thunder-street-ministry"
 # With a custom domain (thunderstreetministry.org), set url to that domain and baseurl to ""
-url: "https://YOUR-USERNAME.github.io"
+url: "https://ThunderRoadEngage.github.io"
 baseurl: "/thunder-street-ministry"
 
 # Where families write to ask for help (shown on Home, the header and the footer)
-contact_email: help@thunderstreetministry.org
+contact_email: thunderstreetministry@protonmail.com
 
 # Contact form. Create a free form at https://formspree.io, then paste its
 # endpoint here, e.g. "https://formspree.io/f/abcdwxyz".
