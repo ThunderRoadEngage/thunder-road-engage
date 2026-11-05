@@ -1,0 +1,14 @@
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}, home">
+    {% include mark.html %}
+    <span class="brand-name">{{ site.short_title }}</span>
+  </a>
+  {% unless site.under_construction %}
+  <nav class="site-nav" aria-label="Main">
+    <a href="{{ '/about/' | relative_url }}"{% if page.nav == 'about' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/cases/' | relative_url }}"{% if page.nav == 'cases' %} aria-current="page"{% endif %}>Cases</a>
+    <a href="{{ '/resources/' | relative_url }}"{% if page.nav == 'resources' %} aria-current="page"{% endif %}>Resources</a>
+  </nav>
+  {% endunless %}
+  <a class="btn btn-primary header-help" href="mailto:{{ site.contact_email }}" data-contact-open>Contact us</a>
+</header>

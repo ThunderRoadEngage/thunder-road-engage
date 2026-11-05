@@ -1,0 +1,66 @@
+# Resources page content.
+# Each group becomes a section. Add a link by copying one "- title:" block.
+#   title:       name of the course, book or organization
+#   by:          (optional) author or publisher
+#   description: one or two sentences on why it helps
+#   kind:        (optional) short label, e.g. Course, Webinar, Book, Database
+#   url:         full web address
+
+- id: training
+  title: Training
+  intro: Courses and workshops for families, advocates and volunteer researchers.
+  links:
+    - title: Course title goes here
+      description: Replace with a training course, webinar or certification you recommend, and say who it is for.
+      kind: Course
+      url: https://example.org/course
+    - title: Workshop title goes here
+      description: A second sample entry. Describe what someone will be able to do after finishing it.
+      kind: Webinar
+      url: https://example.org/workshop
+    - title: Public records research basics
+      description: Sample entry. A good place for a guide to court records, archives and open-source research.
+      kind: Guide
+      url: https://example.org/guide
+
+- id: reading
+  title: Recommended reading
+  intro: Books and long-form writing on cold cases, grief and the investigative process.
+  links:
+    - title: Book title goes here
+      by: Author name
+      description: Replace with a book you recommend and a sentence on why.
+      kind: Book
+      url: https://example.org/book
+    - title: Second book title
+      by: Author name
+      description: Sample entry for a second title.
+      kind: Book
+      url: https://example.org/book-two
+    - title: Article or report title
+      by: Publication name
+      description: Sample entry for an article, study or report.
+      kind: Article
+      url: https://example.org/article
+
+- id: organizations
+  title: Outreaches and organizations
+  intro: Groups that families and investigators often turn to first.
+  links:
+    - title: NamUs
+      by: National Institute of Justice
+      description: The national database of missing, unidentified and unclaimed persons in the United States. Families can enter a case directly.
+      kind: Database
+      url: https://namus.nij.ojp.gov/
+    - title: National Center for Missing & Exploited Children
+      description: Help for families of missing children, including case management and age-progression images.
+      kind: Nonprofit
+      url: https://www.missingkids.org/
+    - title: The Doe Network
+      description: Volunteers who work to match missing persons with unidentified remains across North America.
+      kind: Volunteer group
+      url: https://www.doenetwork.org/
+    - title: The Charley Project
+      description: A long-running public database of cold missing-person cases in the United States.
+      kind: Database
+      url: https://charleyproject.org/

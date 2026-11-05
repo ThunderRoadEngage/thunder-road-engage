@@ -1,0 +1,155 @@
+---
+layout: default
+---
+{% assign lead = page.agencies | first %}
+<article class="case">
+  <div class="case-top">
+    <div class="scene case-scene" aria-hidden="true"><img src="{{ page.banner | default: '/assets/img/scenes/ridge.jpg' | relative_url }}" alt="" width="2000" height="1250"></div>
+    <div class="case-top-inner">
+      <a class="back-link" href="{{ '/cases/' | relative_url }}">All cases</a>
+      <header class="case-hero">
+        <div class="case-frame">
+          <img class="case-portrait" src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.name }}" width="480" height="600" style="view-transition-name: case-{{ page.slug }}">
+        </div>
+        <div class="case-id">
+          <p class="status status--{{ page.status | downcase }}">{{ page.status }}</p>
+          <h1>{{ page.name }}</h1>
+          <p class="case-age">Age {{ page.age }} at disappearance</p>
+          <dl class="facts">
+            {% if page.last_seen %}<div><dt>Last seen</dt><dd>{{ page.last_seen }}</dd></div>{% endif %}
+            {% if page.location.place %}<div><dt>Last seen in</dt><dd>{{ page.location.place }}</dd></div>{% endif %}
+            {% if page.case_number %}<div><dt>Agency case no.</dt><dd class="num">{{ page.case_number }}</dd></div>{% endif %}
+          </dl>
+          {% if lead %}
+          <aside class="tip-panel">
+            <h2>Have information about {{ page.name }}?</h2>
+            <p>Contact {{ lead.name }}{% if lead.phone %} at <a class="num" href="tel:{{ lead.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ lead.phone }}</a>{% endif %}, or send us a tip. Even a small detail can matter.</p>
+            <a class="btn btn-primary tip-btn" href="mailto:{{ site.contact_email }}" data-contact-open data-contact-topic="help-tip">Send us a tip</a>
+          </aside>
+          {% endif %}
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="case-body">
+  <div class="case-sections">
+    <section class="case-section case-synopsis" aria-labelledby="h-synopsis">
+      <h2 id="h-synopsis">Synopsis</h2>
+      <div class="prose">{{ page.synopsis | markdownify }}</div>
+    </section>
+
+    <section class="case-section case-location" aria-labelledby="h-location">
+      <h2 id="h-location">Location</h2>
+      <p class="loc-place">{{ page.location.place }}</p>
+      {% if page.location.detail %}<p>{{ page.location.detail }}</p>{% endif %}
+      {% if page.location.lat %}
+      <p class="loc-coords num">{{ page.location.lat }}° N, {{ page.location.lng | remove: '-' }}° W</p>
+      <a class="text-link" href="https://www.openstreetmap.org/?mlat={{ page.location.lat }}&amp;mlon={{ page.location.lng }}#map=13/{{ page.location.lat }}/{{ page.location.lng }}" target="_blank" rel="noopener">Open in map</a>
+      {% elsif page.location.map_search %}
+      <a class="text-link" href="https://www.openstreetmap.org/search?query={{ page.location.map_search | replace: ' ', '%20' | replace: ',', '%2C' }}" target="_blank" rel="noopener">Open in map</a>
+      {% endif %}
+    </section>
+
+    <section class="case-section case-agencies" aria-labelledby="h-agencies">
+      <h2 id="h-agencies">Investigating agencies</h2>
+      <ul class="agency-list">
+        {% for agency in page.agencies %}
+        <li>
+          <p class="agency-name">{% if agency.url %}<a href="{{ agency.url }}" target="_blank" rel="noopener">{{ agency.name }}</a>{% else %}{{ agency.name }}{% endif %}</p>
+          {% if agency.role %}<p class="agency-role">{{ agency.role }}</p>{% endif %}
+          {% if agency.phone %}<p class="num">{{ agency.phone }}</p>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+
+  <div class="tabs" data-tabs>
+    <div class="tablist" role="tablist" aria-label="Case details">
+      <button class="tab" role="tab" id="tab-overview" aria-controls="overview" aria-selected="true">Overview</button>
+      <button class="tab" role="tab" id="tab-photos" aria-controls="photos" aria-selected="false">Case photos{% if page.photos.size > 0 %} <span class="tab-count">{{ page.photos | size }}</span>{% endif %}</button>
+      <button class="tab" role="tab" id="tab-research" aria-controls="research" aria-selected="false">Research</button>
+    </div>
+
+    <section class="tabpanel" role="tabpanel" id="overview" aria-labelledby="tab-overview" tabindex="0">
+      {% if page.timeline.size > 0 %}
+      <h2 class="panel-title">The chain of events</h2>
+      <ol class="timeline">
+        {% for step in page.timeline %}
+        <li>
+          <time class="num">{{ step.date }}</time>
+          <p>{{ step.event }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+      {% assign account = content | strip %}
+      {% if account != "" %}
+      <div class="account">
+        <h2 class="panel-title">Full account</h2>
+        <div class="prose prose-long">
+{{ content }}
+        </div>
+      </div>
+      {% endif %}
+      {% if page.timeline.size == 0 and account == "" %}<p class="empty">The chain of events for this case will be posted here.</p>{% endif %}
+    </section>
+
+    <section class="tabpanel" role="tabpanel" id="photos" aria-labelledby="tab-photos" tabindex="0">
+      <h2 class="panel-title">Case photos</h2>
+      {% if page.photos.size > 0 %}
+      <ul class="gallery">
+        {% for photo in page.photos %}
+        <li class="gallery-item{% if photo.sensitive %} is-sensitive{% endif %}">
+          <button class="gallery-open" type="button" data-full="{{ photo.src | relative_url }}" data-caption="{{ photo.caption }}">
+            <img src="{{ photo.src | relative_url }}" alt="{{ photo.caption }}" loading="lazy" width="640" height="480">
+          </button>
+          {% if photo.sensitive %}
+          <div class="sensitive-cover">
+            <p>This photo may be upsetting.</p>
+            <button class="btn btn-line sensitive-reveal" type="button">Show photo</button>
+          </div>
+          {% endif %}
+          <p class="gallery-caption">{{ photo.caption }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">No case photos have been added yet.</p>
+      {% endif %}
+    </section>
+
+    <section class="tabpanel" role="tabpanel" id="research" aria-labelledby="tab-research" tabindex="0">
+      <h2 class="panel-title">Research</h2>
+      {% if page.research.size > 0 %}
+      <ul class="research-list">
+        {% for doc in page.research %}
+        <li>
+          <a class="research-item" href="{{ doc.url }}" target="_blank" rel="noopener">
+            <span class="research-title">{{ doc.title }}</span>
+            {% if doc.label %}<span class="research-label">{{ doc.label }}</span>{% endif %}
+            {% if doc.description %}<span class="research-desc">{{ doc.description }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if page.research_notes %}<div class="prose">{{ page.research_notes | markdownify }}</div>{% endif %}
+      {% if page.research.size == 0 and page.research_notes == nil %}<p class="empty">Research for this case will be posted here.</p>{% endif %}
+    </section>
+  </div>
+  </div>
+</article>
+
+<dialog class="lightbox" aria-label="Case photo">
+  <form method="dialog"><button class="lightbox-close" aria-label="Close photo">Close</button></form>
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <div class="lightbox-nav">
+    <button type="button" class="btn btn-line" data-step="-1">Previous</button>
+    <button type="button" class="btn btn-line" data-step="1">Next</button>
+  </div>
+</dialog>

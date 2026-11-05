@@ -1,0 +1,31 @@
+---
+layout: default
+title: Cases
+nav: cases
+description: Missing and murdered people whose families Thunder Street Ministry is helping.
+---
+{% assign cases = site.cases | sort: "order" %}
+{% include banner.html image="/assets/img/scenes/ridge.jpg" title="Cases" lede="Each person here is someone's child, parent, sibling or friend. Choose a photo to read their case and see who to contact with information." %}
+<div class="page cases-index">
+
+  <div class="case-filter" role="group" aria-label="Filter cases" data-filter>
+    <button type="button" aria-pressed="true" data-value="all">All <span class="num">{{ cases | size }}</span></button>
+    <button type="button" aria-pressed="false" data-value="missing">Missing</button>
+    <button type="button" aria-pressed="false" data-value="murdered">Murdered</button>
+    <button type="button" aria-pressed="false" data-value="unidentified">Unidentified</button>
+  </div>
+
+  <ul class="case-grid">
+    {% for case in cases %}
+    <li class="case-card" data-status="{{ case.status | downcase }}">
+      <a href="{{ case.url | relative_url }}">
+        <img src="{{ case.photo | relative_url }}" alt="" width="480" height="600" loading="lazy" style="view-transition-name: case-{{ case.slug }}">
+        <span class="case-card-name">{{ case.name }}</span>
+        <span class="case-card-age">Age {{ case.age }} at disappearance</span>
+        <span class="case-card-note">{{ case.status_note }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="empty" data-empty hidden>No cases in this group yet.</p>
+</div>

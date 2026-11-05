@@ -1,0 +1,37 @@
+---
+layout: default
+title: Resources
+nav: resources
+permalink: /resources/
+description: Training, recommended reading, and outreaches for families and volunteers working cold cases.
+---
+{% include banner.html image="/assets/img/scenes/road.jpg" title="Resources" lede="Where to start, sorted by what you need. Links open in a new tab." %}
+<div class="page resources">
+
+  <nav class="resource-jump" aria-label="Resource categories">
+    {% for group in site.data.resources %}
+    <a href="#{{ group.id }}">{{ group.title }} <span class="num">{{ group.links | size }}</span></a>
+    {% endfor %}
+  </nav>
+
+  {% for group in site.data.resources %}
+  <section class="resource-group" id="{{ group.id }}" aria-labelledby="{{ group.id }}-h">
+    <header class="resource-group-head">
+      <h2 id="{{ group.id }}-h">{{ group.title }}</h2>
+      <p>{{ group.intro }}</p>
+    </header>
+    <ul class="resource-list">
+      {% for link in group.links %}
+      <li>
+        <a class="resource" href="{{ link.url }}" target="_blank" rel="noopener">
+          <span class="resource-title">{{ link.title }}</span>
+          {% if link.by %}<span class="resource-by">{{ link.by }}</span>{% endif %}
+          <span class="resource-desc">{{ link.description }}</span>
+          <span class="resource-meta">{% if link.kind %}<span class="resource-kind">{{ link.kind }}</span>{% endif %}<span class="resource-host">{{ link.url | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first }}</span></span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>

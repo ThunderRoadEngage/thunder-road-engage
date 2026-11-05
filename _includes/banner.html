@@ -1,0 +1,7 @@
+<header class="banner">
+  <div class="scene" aria-hidden="true"><img src="{{ include.image | relative_url }}" alt="" width="2000" height="1250"></div>
+  <div class="banner-inner">
+    <h1>{{ include.title }}</h1>
+    {% if include.lede %}<p class="banner-lede">{{ include.lede }}</p>{% endif %}
+  </div>
+</header>

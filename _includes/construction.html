@@ -1,0 +1,36 @@
+{% assign featured = site.cases | where: "slug", site.featured_case | first %}
+<div class="scene scene--home" aria-hidden="true"><img src="{{ '/assets/img/scenes/road.jpg' | relative_url }}" alt="" width="2000" height="1250" fetchpriority="high"></div>
+<div class="home construction">
+  <section class="home-hero" aria-labelledby="home-title">
+    <p class="build-status"><span class="build-dot" aria-hidden="true"></span>Under construction</p>
+    <h1 id="home-title" class="wordmark">
+      <span class="wm-line">Thunder</span>
+      <span class="wm-line">Street <span class="wordmark-sub">Ministry</span></span>
+    </h1>
+    <div class="home-intro">
+      <p class="home-lede">Our full website is being built. Until it's ready, you can read our first case or reach out to us directly. Our help is always free.</p>
+      <div class="home-help">
+        <a class="btn btn-primary" href="mailto:{{ site.contact_email }}" data-contact-open>Contact us</a>
+        <p>or write to <span class="select">{{ site.contact_email }}</span></p>
+      </div>
+    </div>
+    {% if featured %}
+    <a class="featured-case" href="{{ featured.url | relative_url }}">
+      <img src="{{ featured.photo | relative_url }}" alt="" width="120" height="150" style="view-transition-name: case-{{ featured.slug }}">
+      <span class="featured-body">
+        <span class="featured-kicker">Read our first case</span>
+        <span class="featured-name">{{ featured.name }}</span>
+        <span class="featured-age">Age {{ featured.age }} at disappearance</span>
+        <span class="featured-note">{{ featured.status_note }}</span>
+      </span>
+    </a>
+    {% endif %}
+  </section>
+
+  <div class="construction-band">
+    <blockquote class="band-verse">
+      <p>{{ site.verse.text }}</p>
+      <cite>{{ site.verse.ref }}</cite>
+    </blockquote>
+  </div>
+</div>

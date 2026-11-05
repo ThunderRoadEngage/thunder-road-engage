@@ -1,0 +1,45 @@
+---
+layout: default
+nav: home
+no_footer: true
+---
+{% if site.under_construction %}{% include construction.html %}{% else %}
+<div class="scene scene--home" aria-hidden="true"><img src="{{ '/assets/img/scenes/road.jpg' | relative_url }}" alt="" width="2000" height="1250" fetchpriority="high"></div>
+<div class="home">
+  <section class="home-hero" aria-labelledby="home-title">
+    <h1 id="home-title" class="wordmark">
+      <span class="wm-line">Thunder</span>
+      <span class="wm-line">Street <span class="wordmark-sub">Ministry</span></span>
+    </h1>
+    <div class="home-intro">
+      <p class="home-lede">Free awareness and research for families whose loved one is missing or was murdered, and whose case has gone quiet.</p>
+      <div class="home-help">
+        <a class="btn btn-primary" href="mailto:{{ site.contact_email }}" data-contact-open>Ask us for help</a>
+        <p>or write to <span class="select">{{ site.contact_email }}</span></p>
+      </div>
+    </div>
+    <blockquote class="home-verse">
+      <p>{{ site.verse.text }}</p>
+      <cite>{{ site.verse.ref }}</cite>
+    </blockquote>
+  </section>
+
+  <nav class="doorways" aria-label="Where to go next">
+    <a class="doorway" href="{{ '/cases/' | relative_url }}">
+      <img class="doorway-img" src="{{ '/assets/img/scenes/ridge.jpg' | relative_url }}" alt="" width="2000" height="1250">
+      <span class="doorway-title">Cases</span>
+      <span class="doorway-text">The people we are searching for, and what is known about each case.</span>
+    </a>
+    <a class="doorway" href="{{ '/about/' | relative_url }}">
+      <img class="doorway-img" src="{{ '/assets/img/scenes/pines.jpg' | relative_url }}" alt="" width="2000" height="1250">
+      <span class="doorway-title">About</span>
+      <span class="doorway-text">Our goals, how we research, and the mission behind the work.</span>
+    </a>
+    <a class="doorway" href="{{ '/resources/' | relative_url }}">
+      <img class="doorway-img" src="{{ '/assets/img/scenes/road.jpg' | relative_url }}" alt="" width="2000" height="1250">
+      <span class="doorway-title">Resources</span>
+      <span class="doorway-text">Training, reading and organizations for families and volunteers.</span>
+    </a>
+  </nav>
+</div>
+{% endif %}

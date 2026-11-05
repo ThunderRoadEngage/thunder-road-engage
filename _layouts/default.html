@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+<div class="site site--{{ page.nav | default: 'page' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include header.html %}
+  <main id="main">
+{{ content }}
+  </main>
+  {% unless page.no_footer %}{% include footer.html %}{% endunless %}
+</div>
+{% include contact-dialog.html %}
+</body>
+</html>

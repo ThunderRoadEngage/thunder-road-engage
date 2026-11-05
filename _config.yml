@@ -1,0 +1,54 @@
+# ------------------------------------------------------------
+# Thunder Street Ministry — site settings
+# Edit the values below, then commit. GitHub Pages rebuilds automatically.
+# ------------------------------------------------------------
+
+title: Thunder Street Ministry
+short_title: Thunder Street
+description: No-cost awareness and research for families of the missing and murdered.
+
+# If the repo is named YOUR-USERNAME.github.io, set baseurl to ""
+# If the repo has another name (e.g. thunder-street-ministry), set baseurl to "/thunder-street-ministry"
+# With a custom domain (thunderstreetministry.org), set url to that domain and baseurl to ""
+url: "https://YOUR-USERNAME.github.io"
+baseurl: "/thunder-street-ministry"
+
+# Where families write to ask for help (shown on Home, the header and the footer)
+contact_email: help@thunderstreetministry.org
+
+# Contact form. Create a free form at https://formspree.io, then paste its
+# endpoint here, e.g. "https://formspree.io/f/abcdwxyz".
+# Left empty, the form opens the visitor's email app with their message filled in.
+contact_form_endpoint: ""
+
+# Under construction mode. While true, the home page shows the "under construction"
+# screen featuring the case below, and the About / Cases / Resources menu is hidden.
+# Set to false when the full site is ready to launch.
+under_construction: true
+featured_case: jaryd-atadero   # file name of the case to feature, without .md
+
+# The verse on the Home page and in the footer
+verse:
+  text: "For nothing is secret, that shall not be made manifest; neither any thing hid, that shall not be known and come abroad."
+  ref: "Luke 8:17"
+
+collections:
+  cases:
+    output: true
+    permalink: /cases/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: cases
+    values:
+      layout: case
+      nav: cases
+
+markdown: kramdown
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - templates

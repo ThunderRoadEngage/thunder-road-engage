@@ -1,0 +1,17 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      {% include mark.html %}
+      <p><strong>{{ site.title }}</strong><br>Awareness and research for families, always at no cost.</p>
+    </div>
+    <div class="footer-contact">
+      <p>Families can reach us at</p>
+      <a class="footer-email" href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+    </div>
+    <blockquote class="footer-verse">
+      <p>{{ site.verse.text }}</p>
+      <cite>{{ site.verse.ref }}</cite>
+    </blockquote>
+  </div>
+  <p class="footer-legal">&copy; {{ site.time | date: "%Y" }} {{ site.title }}. If you have information about a case, contact the investigating agency listed on that case.</p>
+</footer>
