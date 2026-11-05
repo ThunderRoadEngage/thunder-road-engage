@@ -11,7 +11,7 @@ description: No-cost awareness and research for families of the missing and murd
 # If the repo has another name (e.g. thunder-street-ministry), set baseurl to "/thunder-street-ministry"
 # With a custom domain (thunderstreetministry.org), set url to that domain and baseurl to ""
 url: "https://ThunderRoadEngage.github.io"
-baseurl: "/thunder-street-ministry"
+baseurl: "/thunder-road-engage"
 
 # Where families write to ask for help (shown on Home, the header and the footer)
 contact_email: thunderstreetministry@protonmail.com
