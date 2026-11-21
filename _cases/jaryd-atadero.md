@@ -140,11 +140,13 @@ research:
   - title: "Jaryd Atadero Full Disclosure: Part One – Theories"
     label: Rough draft
     description: The first in a series of living documents, we discuss the most prevalent theories that have orbited the discussions about Jaryd, including the mountain lion and the paranormal so proper context can be established for subsequent presentations in the coming weeks and months.
-    url: https://web.archive.org/web/20260410194235/https://drive.google.com/file/d/11tKdlzDeaQVC9ArgX9LwlywoHmIM_L4z/view?usp=drive_link
+    file: /assets/docs/jaryd/jaryd-atadero-full-disclosure-part-one.pdf
+    pages: 9
   - title: "Jaryd Atadero Full Disclosure: Part Two – The Evidence"
-    label: Work in progress
+    label: Revised
     description: Photos and commentary of the evidence as allegedly discovered by two hikers.
-    url: https://web.archive.org/web/20260410194235/https://drive.google.com/file/d/1iFEIqpuRl1_Y-IkKtk7AcLRptMylHYq_/view?usp=sharing
+    file: /assets/docs/jaryd/jaryd-atadero-full-disclosure-part-two.pdf
+    pages: 6
 ---
 
 On Saturday, October 2nd of 1999, Allyn Atadero hosted a Christian Singles Network group at his resort in Poudre Canyon, which lies approximately 45 minutes west of Fort Collins, CO. At approximately 9:00AM, the group decided to go on a spur-of-the-moment hike around a nearby fish hatchery 5 miles further west of Poudre River Resort. It was at this time that Allyn's 6-year-old daughter Josallyn came up to her father and asked him if she could "go see the fish." Josallyn would be accompanying a close family friend and member of the group we will refer to as Janet. Allyn was under the impression they would be spending time at the hatchery, knew the area was easy to hike, and gave Josallyn permission to go with Janet.

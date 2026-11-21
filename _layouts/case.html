@@ -143,10 +143,12 @@ layout: default
       <ul class="research-list">
         {% for doc in page.research %}
         <li>
-          <a class="research-item" href="{{ doc.url }}" target="_blank" rel="noopener">
+          <a class="research-item{% if doc.file %} research-item--file{% endif %}" href="{% if doc.file %}{{ doc.file | relative_url }}{% else %}{{ doc.url }}{% endif %}" target="_blank" rel="noopener">
+            {% if doc.file %}<span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 30"><path d="M2 1h13l7 7v21H2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 1v7h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>PDF</span></span>{% endif %}
             <span class="research-title">{{ doc.title }}</span>
             {% if doc.label %}<span class="research-label">{{ doc.label }}</span>{% endif %}
             {% if doc.description %}<span class="research-desc">{{ doc.description }}</span>{% endif %}
+            {% if doc.file %}<span class="research-meta">PDF document{% if doc.pages %}, {{ doc.pages }} pages{% endif %}. Opens in a new tab.</span>{% endif %}
           </a>
         </li>
         {% endfor %}

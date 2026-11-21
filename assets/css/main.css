@@ -1252,8 +1252,34 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   white-space: nowrap;
 }
 .research-desc { grid-area: desc; color: var(--mist); font-size: 0.9688rem; max-width: 66ch; }
+.research-item--file {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "icon title label" "icon desc desc" "icon meta meta";
+  column-gap: 1.25rem;
+}
+.research-icon {
+  grid-area: icon;
+  position: relative;
+  width: 3rem;
+  align-self: start;
+  margin-top: 0.1rem;
+  color: var(--gold);
+}
+.research-icon svg { width: 3rem; height: auto; display: block; }
+.research-icon span {
+  position: absolute;
+  left: 0; right: 0; bottom: 0.55rem;
+  text-align: center;
+  font: 800 0.6875rem var(--font-body);
+  letter-spacing: 0.04em;
+  color: var(--gold-hi);
+}
+.research-item--file:hover .research-icon { color: var(--gold-hi); }
+.research-meta { grid-area: meta; color: var(--cyan-text); font-size: var(--step--1); font-weight: 600; }
 @media (max-width: 560px) {
   .research-item { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "label" "desc"; }
+  .research-item--file { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "icon title" "icon label" "desc desc" "meta meta"; column-gap: 1rem; }
+  .research-icon, .research-icon svg { width: 2.5rem; }
   .research-label { justify-self: start; }
 }
 
