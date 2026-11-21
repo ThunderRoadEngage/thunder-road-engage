@@ -44,7 +44,97 @@ timeline:
   - date: Around 2009
     event: A reporter tells Allyn an anonymous caller said there would be an arrest in the case.
 
-photos: []
+photos:
+  - src: /assets/img/cases/jaryd/site-1.jpg
+    thumb: /assets/img/cases/jaryd/site-1-thumb.jpg
+    group: "The recovery site"
+    caption: "The ridge above the Big South Trail where Jaryd's clothing was found, June 2003. A shoe is visible under the rocks at left, below the pine branch."
+  - src: /assets/img/cases/jaryd/site-2.jpg
+    thumb: /assets/img/cases/jaryd/site-2-thumb.jpg
+    group: "The recovery site"
+    caption: "A second view of the site. A shoe is visible in the gap beneath the large slab of rock."
+  - src: /assets/img/cases/jaryd/jacket-1.jpg
+    thumb: /assets/img/cases/jaryd/jacket-1-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "Jaryd's fleece jacket in the lab. Orange cards are placed behind holes and tears so they show clearly."
+  - src: /assets/img/cases/jaryd/jacket-2.jpg
+    thumb: /assets/img/cases/jaryd/jacket-2-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "The sleeve of the jacket, with orange cards marking the holes in the tan panel."
+  - src: /assets/img/cases/jaryd/jacket-3.jpg
+    thumb: /assets/img/cases/jaryd/jacket-3-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "The sleeve from the cuff, showing the tears along the tan panel and the patterned fleece."
+  - src: /assets/img/cases/jaryd/jacket-4.jpg
+    thumb: /assets/img/cases/jaryd/jacket-4-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "A closer view of the same sleeve."
+  - src: /assets/img/cases/jaryd/jacket-5.jpg
+    thumb: /assets/img/cases/jaryd/jacket-5-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "The sleeve photographed with the scale held across the cuff."
+  - src: /assets/img/cases/jaryd/jacket-6.jpg
+    thumb: /assets/img/cases/jaryd/jacket-6-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "Close-up of the tears in the tan panel of the sleeve."
+  - src: /assets/img/cases/jaryd/jacket-7.jpg
+    thumb: /assets/img/cases/jaryd/jacket-7-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "The collar and front panel of the jacket."
+  - src: /assets/img/cases/jaryd/jacket-8.jpg
+    thumb: /assets/img/cases/jaryd/jacket-8-thumb.jpg
+    group: "Jaryd's jacket"
+    caption: "The collar and front panel, photographed with brighter lighting."
+  - src: /assets/img/cases/jaryd/remains-1.jpg
+    thumb: /assets/img/cases/jaryd/remains-1-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "The top of the skull and debris collected from the site, with its evidence bag."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-2.jpg
+    thumb: /assets/img/cases/jaryd/remains-2-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "A closer view of the skull and the collected debris."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-3.jpg
+    thumb: /assets/img/cases/jaryd/remains-3-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "Interior of the skull, with the evidence label."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-4.jpg
+    thumb: /assets/img/cases/jaryd/remains-4-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "A closer view of the interior."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-5.jpg
+    thumb: /assets/img/cases/jaryd/remains-5-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "The top of the skull from above, with the evidence label."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-6.jpg
+    thumb: /assets/img/cases/jaryd/remains-6-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "The skull from the back."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-7.jpg
+    thumb: /assets/img/cases/jaryd/remains-7-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "The skull from the side."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-8.jpg
+    thumb: /assets/img/cases/jaryd/remains-8-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "The skull from the front."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-9.jpg
+    thumb: /assets/img/cases/jaryd/remains-9-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "Lab photo: interior of the skull."
+    sensitive: true
+  - src: /assets/img/cases/jaryd/remains-10.jpg
+    thumb: /assets/img/cases/jaryd/remains-10-thumb.jpg
+    group: "Remains recovered by NecroSearch"
+    caption: "Lab photo: the occipital bone (back of the skull)."
+    sensitive: true
 
 research:
   - title: "Jaryd Atadero Full Disclosure: Part One – Theories"

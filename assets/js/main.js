@@ -48,6 +48,17 @@
   });
 
   /* ---------- Sensitive photos: blurred until the viewer chooses ---------- */
+  document.querySelectorAll(".group-reveal").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var group = btn.closest(".gallery-group");
+      group.querySelectorAll(".gallery-item.is-sensitive").forEach(function (item) { item.classList.remove("is-sensitive"); });
+      group.classList.remove("has-sensitive");
+      var warning = btn.closest(".group-warning");
+      if (warning) warning.hidden = true;
+      var first = group.querySelector(".gallery-open");
+      if (first) first.focus();
+    });
+  });
   document.querySelectorAll(".sensitive-reveal").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var item = btn.closest(".gallery-item");

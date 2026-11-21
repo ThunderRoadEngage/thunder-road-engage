@@ -99,22 +99,39 @@ layout: default
     <section class="tabpanel" role="tabpanel" id="photos" aria-labelledby="tab-photos" tabindex="0">
       <h2 class="panel-title">Case photos</h2>
       {% if page.photos.size > 0 %}
-      <ul class="gallery">
-        {% for photo in page.photos %}
-        <li class="gallery-item{% if photo.sensitive %} is-sensitive{% endif %}">
-          <button class="gallery-open" type="button" data-full="{{ photo.src | relative_url }}" data-caption="{{ photo.caption }}">
-            <img src="{{ photo.src | relative_url }}" alt="{{ photo.caption }}" loading="lazy" width="640" height="480">
-          </button>
-          {% if photo.sensitive %}
-          <div class="sensitive-cover">
-            <p>This photo may be upsetting.</p>
-            <button class="btn btn-line sensitive-reveal" type="button">Show photo</button>
+      {% assign photo_groups = page.photos | group_by: "group" %}
+      {% for g in photo_groups %}
+      {% assign hidden_photos = g.items | where: "sensitive", true %}
+      <section class="gallery-group{% if hidden_photos.size > 0 %} has-sensitive{% endif %}">
+        {% if g.name != "" %}
+        <header class="gallery-group-head">
+          <h3>{{ g.name }} <span class="num">{{ g.items | size }}</span></h3>
+          {% if hidden_photos.size > 0 %}
+          <div class="group-warning">
+            <p>{% if hidden_photos.size == g.items.size %}These photos show human remains and are hidden until you choose to see them.{% else %}Some of these photos may be upsetting and are hidden until you choose to see them.{% endif %}</p>
+            <button class="btn btn-line group-reveal" type="button">Show {% if hidden_photos.size == g.items.size %}all {{ g.items | size }} photos{% else %}hidden photos{% endif %}</button>
           </div>
           {% endif %}
-          <p class="gallery-caption">{{ photo.caption }}</p>
-        </li>
-        {% endfor %}
-      </ul>
+        </header>
+        {% endif %}
+        <ul class="gallery">
+          {% for photo in g.items %}
+          <li class="gallery-item{% if photo.sensitive %} is-sensitive{% endif %}">
+            <button class="gallery-open" type="button" data-full="{{ photo.src | relative_url }}" data-caption="{{ photo.caption | escape }}">
+              <img src="{{ photo.thumb | default: photo.src | relative_url }}" alt="{{ photo.caption | escape }}" loading="lazy" width="720" height="480">
+            </button>
+            {% if photo.sensitive %}
+            <div class="sensitive-cover">
+              <p>This photo may be upsetting.</p>
+              <button class="btn btn-line sensitive-reveal" type="button">Show photo</button>
+            </div>
+            {% endif %}
+            <p class="gallery-caption">{{ photo.caption }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endfor %}
       {% else %}
       <p class="empty">No case photos have been added yet.</p>
       {% endif %}
