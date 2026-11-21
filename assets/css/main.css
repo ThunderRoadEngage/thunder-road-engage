@@ -323,14 +323,14 @@ ul, ol, dl, dd, figure, blockquote { margin: 0; padding: 0; }
    HOME and UNDER CONSTRUCTION — fixed, one screen
    ========================================================================== */
 
-html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidden; }
-
+/* Phones and short screens: the home page scrolls like any other page.
+   Larger screens: it locks to exactly one screen (see the media query below). */
 .site--home {
   position: relative;
   isolation: isolate;
-  height: 100dvh;
+  min-height: 100dvh;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
 }
 .site--home .site-header {
   position: relative;
@@ -340,7 +340,7 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   -webkit-backdrop-filter: none;
   border-bottom-color: transparent;
 }
-.site--home main { min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.site--home main { display: grid; }
 
 .scene--home {
   --light-x: 63%;
@@ -352,9 +352,15 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
 .scene--home img { object-position: 63% 50%; }
 
 .home {
-  height: 100%;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: 1fr auto;
+}
+
+@media (min-width: 761px) and (min-height: 600px) {
+  html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidden; }
+  .site--home { height: 100dvh; min-height: 0; grid-template-rows: auto minmax(0, 1fr); }
+  .site--home main { min-height: 0; }
+  .home { height: 100%; grid-template-rows: minmax(0, 1fr) auto; }
 }
 
 .home-hero {
@@ -619,22 +625,18 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   .featured-case img { width: 80px; }
   .featured-name { font-size: 1.75rem; }
   .doorways { grid-template-columns: minmax(0, 1fr); }
-  .doorway { min-height: 0; grid-template-columns: 8.75rem minmax(0, 1fr); align-items: baseline; gap: 1rem; padding-block: 1rem; }
+  .doorway { min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 0.3rem; padding-block: 1.1rem; }
   .doorway + .doorway { border-left: 0; border-top: 1px solid var(--gold-deep); }
   .doorway-title { font-size: 1.75rem; }
   .doorway-text { font-size: 0.875rem; }
-}
-@media (max-width: 760px) and (max-height: 920px) {
-  .home-verse, .construction-band { display: none; }
 }
 @media (max-width: 400px) {
   .brand-name { font-size: 1.375rem; }
   .header-help { padding-inline: 1rem; }
 }
-/* Very short screens (landscape phones): let the home page scroll rather than clip */
-@media (max-height: 520px) {
-  html:has(.site--home), html:has(.site--home) body { height: auto; overflow: auto; }
-  .site--home { height: auto; min-height: 100dvh; }
+@media (max-width: 440px) {
+  .site-nav { gap: 1rem; }
+  .site-nav a { font-size: 1.125rem; }
 }
 
 /* ==========================================================================
