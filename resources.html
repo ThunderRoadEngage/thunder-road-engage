@@ -3,7 +3,7 @@ layout: default
 title: Resources
 nav: resources
 permalink: /resources/
-description: Training, recommended reading, and outreaches for families and volunteers working cold cases.
+description: Anti-trafficking tip lines, training, recommended reading, and outreaches for families and volunteers working cold cases.
 ---
 {% include banner.html image="/assets/img/scenes/road.jpg" title="Resources" lede="Where to start, sorted by what you need. Links open in a new tab." %}
 <div class="page resources">
@@ -23,12 +23,22 @@ description: Training, recommended reading, and outreaches for families and volu
     <ul class="resource-list">
       {% for link in group.links %}
       <li>
+        {% if link.phone %}
+        <div class="resource resource--phone">
+          <span class="resource-title">{{ link.title }}</span>
+          {% if link.by %}<span class="resource-by">{{ link.by }}</span>{% endif %}
+          <a class="phone-number num" href="tel:{{ link.phone | remove: '-' | remove: ' ' }}">{{ link.phone }}</a>
+          <span class="resource-desc">{{ link.description }}</span>
+          <span class="resource-meta">{% if link.kind %}<span class="resource-kind">{{ link.kind }}</span>{% endif %}{% if link.url %}<a class="resource-host text-link" href="{{ link.url }}" target="_blank" rel="noopener">Report online</a>{% endif %}</span>
+        </div>
+        {% else %}
         <a class="resource" href="{{ link.url }}" target="_blank" rel="noopener">
           <span class="resource-title">{{ link.title }}</span>
           {% if link.by %}<span class="resource-by">{{ link.by }}</span>{% endif %}
           <span class="resource-desc">{{ link.description }}</span>
           <span class="resource-meta">{% if link.kind %}<span class="resource-kind">{{ link.kind }}</span>{% endif %}<span class="resource-host">{{ link.url | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first }}</span></span>
         </a>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

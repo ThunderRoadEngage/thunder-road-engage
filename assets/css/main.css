@@ -1375,7 +1375,8 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   border-top: 3px solid var(--gold);
 }
 .resource-group:first-of-type { margin-top: 2rem; }
-.resource-group-head { display: grid; gap: 0.9rem; align-content: start; }
+.resource-group-head { display: grid; gap: 0.9rem; align-content: start; min-width: 0; }
+.resource-group-head h2 { font-size: clamp(2rem, 3.4vw, 3rem); overflow-wrap: break-word; hyphens: auto; }
 .resource-group-head p { color: var(--mist); }
 
 .resource-list { list-style: none; display: grid; }
@@ -1416,9 +1417,34 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   color: var(--gold-hi);
   font-weight: 700;
 }
+.resource--phone {
+  grid-template-areas: "title meta" "by meta" "phone meta" "desc meta";
+  margin-inline: 0;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border-left-color: var(--gold);
+  background: var(--char-850);
+}
+.resource--phone:hover { background: var(--char-850); }
+.resource--phone:hover .resource-title { color: var(--ink); }
+.phone-number {
+  grid-area: phone;
+  justify-self: start;
+  margin-block: 0.35rem 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--gold-hi);
+  text-decoration: none;
+  user-select: all;
+}
+.phone-number:hover { color: var(--ink); }
+.resource--phone .resource-host { color: var(--cyan-text); font-weight: 600; }
 @media (max-width: 820px) { .resource-group { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) {
   .resource { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "by" "desc" "meta"; }
+  .resource--phone { grid-template-areas: "title" "by" "phone" "desc" "meta"; }
   .resource-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; text-align: left; padding-top: 0.5rem; }
 }
 
