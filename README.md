@@ -27,22 +27,19 @@ A Jekyll site built for GitHub Pages. GitHub builds it for you on every commit â
 | Resources links | `_data/resources.yml` |
 | Colors, type, layout | `assets/css/main.css` (colors are at the top) |
 
-Still sample content: the Training and Recommended Reading links. The four organizations under Resources are real; confirm you want to list them.
+Recommended Reading on the Resources page is hidden until it has real titles; see the note in `_data/resources.yml`. The four organizations under Resources are real; confirm you want to list them.
 
 ## Under construction mode
 
 `under_construction: true` in `_config.yml` shows the "Under construction" screen as the home page, featuring the case named in `featured_case`, and hides the About / Cases / Resources menu. Case pages still work. When the full site is ready, set it to `false` and commit.
 
-## Connecting the contact form
+## Contact form
 
-GitHub Pages can't receive form submissions on its own, so the form uses Formspree (free for up to 50 messages a month).
+The contact form sends through Formspree to the form at `https://formspree.io/f/xppdjdye`, set as `contact_form_endpoint` in `_config.yml`. Messages are delivered to the email address set on that form in your Formspree dashboard, where you can also view every submission.
 
-1. Sign up at https://formspree.io with the email address that should receive messages.
-2. Create a new form and copy its endpoint, which looks like `https://formspree.io/f/abcdwxyz`.
-3. Paste it into `contact_form_endpoint` in `_config.yml` and commit.
-4. Send yourself a test message from the live site. Formspree asks you to confirm the first one.
-
-Until the endpoint is set, the form opens the visitor's email app with their message already filled in.
+- Fields sent: name, email, phone, help_with (the boxes checked) and message, with a subject line naming the sender and what they checked.
+- Spam: the hidden `_gotcha` field catches most bots.
+- To use a different Formspree form, change `contact_form_endpoint`. To stop using Formspree, set it to `""` and the form will open the visitor's email app instead.
 
 ## Adding a case
 

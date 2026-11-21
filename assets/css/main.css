@@ -619,7 +619,7 @@ html:has(.site--home), html:has(.site--home) body { height: 100%; overflow: hidd
   .featured-case img { width: 80px; }
   .featured-name { font-size: 1.75rem; }
   .doorways { grid-template-columns: minmax(0, 1fr); }
-  .doorway { min-height: 0; grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; gap: 1rem; padding-block: 1rem; }
+  .doorway { min-height: 0; grid-template-columns: 8.75rem minmax(0, 1fr); align-items: baseline; gap: 1rem; padding-block: 1rem; }
   .doorway + .doorway { border-left: 0; border-top: 1px solid var(--gold-deep); }
   .doorway-title { font-size: 1.75rem; }
   .doorway-text { font-size: 0.875rem; }

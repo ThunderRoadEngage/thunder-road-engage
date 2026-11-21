@@ -36,25 +36,27 @@
       kind: Training
       url: https://sharedhope.org
 
-- id: reading
-  title: Recommended reading
-  intro: Books and long-form writing on cold cases, grief and the investigative process.
-  links:
-    - title: Book title goes here
-      by: Author name
-      description: Replace with a book you recommend and a sentence on why.
-      kind: Book
-      url: https://example.org/book
-    - title: Second book title
-      by: Author name
-      description: Sample entry for a second title.
-      kind: Book
-      url: https://example.org/book-two
-    - title: Article or report title
-      by: Publication name
-      description: Sample entry for an article, study or report.
-      kind: Article
-      url: https://example.org/article
+# Recommended reading is hidden until it has real titles.
+# To show it, remove the "# " from the start of each line below and replace the sample entries.
+# - id: reading
+#   title: Recommended reading
+#   intro: Books and long-form writing on cold cases, grief and the investigative process.
+#   links:
+#     - title: Book title goes here
+#       by: Author name
+#       description: Replace with a book you recommend and a sentence on why.
+#       kind: Book
+#       url: https://example.org/book
+#     - title: Second book title
+#       by: Author name
+#       description: Sample entry for a second title.
+#       kind: Book
+#       url: https://example.org/book-two
+#     - title: Article or report title
+#       by: Publication name
+#       description: Sample entry for an article, study or report.
+#       kind: Article
+#       url: https://example.org/article
 
 - id: organizations
   title: Outreaches and organizations

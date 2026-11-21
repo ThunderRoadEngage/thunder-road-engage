@@ -150,22 +150,65 @@
     var endpoint = (form.dataset.endpoint || "").trim();
     var inbox = form.dataset.email;
     var required = ["contact-name", "contact-email", "contact-message"];
+    // Formspree field names mapped to the inputs that show their errors
+    var fieldIds = { name: "contact-name", email: "contact-email", phone: "contact-phone", message: "contact-message" };
+
+    // The script checks the fields itself; without it, the browser's own checks still apply
+    form.noValidate = true;
+    Object.keys(fieldIds).forEach(function (key) {
+      var msg = document.getElementById(fieldIds[key] + "-error");
+      if (msg) msg.dataset.default = msg.textContent;
+    });
 
     function resetForm() {
       form.reset();
       form.hidden = false;
       done.hidden = true;
       status.textContent = "";
-      required.forEach(function (id) { setError(id, false); });
+      Object.keys(fieldIds).forEach(function (key) { setError(fieldIds[key], false); });
     }
 
-    function setError(id, on) {
+    function setError(id, on, text) {
       var input = document.getElementById(id);
       var msg = document.getElementById(id + "-error");
       input.setAttribute("aria-invalid", on ? "true" : "false");
       if (on) input.setAttribute("aria-describedby", id + "-error");
       else input.removeAttribute("aria-describedby");
-      if (msg) msg.hidden = !on;
+      if (msg) {
+        msg.textContent = text || msg.dataset.default || "";
+        msg.hidden = !on;
+      }
+    }
+
+    function fieldLabel(id) {
+      var label = form.querySelector('label[for="' + id + '"]');
+      return label ? label.firstChild.textContent.trim() : "This field";
+    }
+
+    // Show Formspree's errors beside the fields they belong to
+    function showServerErrors(body) {
+      var errors = (body && body.errors) || [];
+      var first = null;
+      var general = [];
+      errors.forEach(function (err) {
+        var id = err.field && fieldIds[err.field];
+        if (id) {
+          setError(id, true, fieldLabel(id) + " " + err.message + ".");
+          if (!first) first = document.getElementById(id);
+        } else if (err.message) {
+          general.push(err.message);
+        }
+      });
+      if (!errors.length && body && body.error) general.push(body.error);
+      if (first) {
+        status.textContent = "Fix the highlighted field and send again.";
+        first.focus();
+      } else {
+        var reason = general.join(" ").trim();
+        if (reason && !/[.!?]$/.test(reason)) reason += ".";
+        status.textContent = "Your message didn't send" + (reason ? ": " + reason : ".") +
+          " Try again, or write to us at " + inbox + ".";
+      }
     }
 
     function validate() {
@@ -202,15 +245,18 @@
       b.addEventListener("click", function () { contact.close(); });
     });
     contact.addEventListener("click", function (e) { if (e.target === contact) contact.close(); });
-    required.forEach(function (id) {
+    Object.keys(fieldIds).forEach(function (key) {
+      var id = fieldIds[key];
       document.getElementById(id).addEventListener("input", function () {
-        if (this.getAttribute("aria-invalid") === "true" && this.value.trim() && this.checkValidity()) setError(id, false);
+        if (this.getAttribute("aria-invalid") === "true" && this.checkValidity() &&
+            (this.value.trim() || required.indexOf(id) < 0)) setError(id, false);
       });
     });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       status.textContent = "";
+      setError("contact-phone", false);
       if (!validate()) return;
       if (form.elements._gotcha.value) return; // spam trap
 
@@ -244,8 +290,13 @@
       submit.textContent = "Sending…";
       fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
         .then(function (res) {
-          if (!res.ok) throw new Error("bad status");
-          showDone("Message sent", "Thank you, " + name + ". We'll reply to " + email + " as soon as we can.");
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            if (res.ok) {
+              showDone("Message sent", "Thank you, " + name + ". We'll reply to " + email + " as soon as we can.");
+            } else {
+              showServerErrors(body);
+            }
+          });
         })
         .catch(function () {
           status.textContent = "Your message didn't send. Check your connection and try again, or write to us at " + inbox + ".";

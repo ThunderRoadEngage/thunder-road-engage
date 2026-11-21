@@ -19,12 +19,12 @@ contact_email: thunderstreetministry@protonmail.com
 # Contact form. Create a free form at https://formspree.io, then paste its
 # endpoint here, e.g. "https://formspree.io/f/abcdwxyz".
 # Left empty, the form opens the visitor's email app with their message filled in.
-contact_form_endpoint: ""
+contact_form_endpoint: "https://formspree.io/f/xppdjdye"
 
 # Under construction mode. While true, the home page shows the "under construction"
 # screen featuring the case below, and the About / Cases / Resources menu is hidden.
 # Set to false when the full site is ready to launch.
-under_construction: true
+under_construction: false
 featured_case: jaryd-atadero   # file name of the case to feature, without .md
 
 # The verse on the Home page and in the footer

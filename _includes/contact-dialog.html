@@ -9,10 +9,10 @@
     </button>
   </div>
 
-  <form class="contact-form" data-endpoint="{{ site.contact_form_endpoint }}" data-email="{{ site.contact_email }}" novalidate>
+  <form class="contact-form" data-endpoint="{{ site.contact_form_endpoint }}" data-email="{{ site.contact_email }}"{% if site.contact_form_endpoint != "" %} action="{{ site.contact_form_endpoint }}" method="POST"{% endif %}>
     <div class="field">
       <label for="contact-name">Name</label>
-      <input id="contact-name" name="name" type="text" autocomplete="name" required>
+      <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required>
       <p class="field-error" id="contact-name-error" hidden>Enter your name.</p>
     </div>
 
@@ -24,7 +24,8 @@
 
     <div class="field">
       <label for="contact-phone">Phone number <span class="optional">(optional)</span></label>
-      <input id="contact-phone" name="phone" type="tel" autocomplete="tel">
+      <input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+      <p class="field-error" id="contact-phone-error" hidden></p>
     </div>
 
     <fieldset class="field help-options">
@@ -46,11 +47,12 @@
 
     <div class="field">
       <label for="contact-message">Your message</label>
-      <textarea id="contact-message" name="message" rows="5" required></textarea>
+      <textarea id="contact-message" name="message" rows="5" maxlength="5000" required></textarea>
       <p class="field-error" id="contact-message-error" hidden>Write a short message so we know how to help.</p>
     </div>
 
     <!-- Spam trap: people never see or fill this field -->
+    <input type="hidden" name="_subject" value="New message from the Thunder Street website">
     <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
     <p class="form-status" role="status" aria-live="polite"></p>
