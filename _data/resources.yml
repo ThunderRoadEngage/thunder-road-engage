@@ -12,9 +12,9 @@
   intro: Report suspected human trafficking to federal investigators. If someone is in immediate danger, call 911.
   links:
     - title: Homeland Security Tip Line
-      by: U.S. Immigration and Customs Enforcement (ICE)
+      by: U.S. Department of Homeland Security
       phone: "1-866-347-2423"
-      description: Toll-free and open to callers in the U.S. and Canada. Takes reports of human trafficking, smuggling and other crimes. Tips can also be sent online.
+      description: Toll-free and open to callers in the U.S. and Canada. If you suspect human trafficking or child sex abuse material, call immediately.
       kind: Tip line
       url: https://www.ice.gov/tipline
 
@@ -24,11 +24,11 @@
   links:
     - title: Association for the Recovery of Children
       description: Recovers missing, abducted and trafficked American children at no cost to custodial parents. Offers equipping courses and a training certification.
-      kind: Training
+      kind: Paid Training
       url: https://recoveryofchildren.org
     - title: DHS Blue Campaign
       by: U.S. Department of Homeland Security
-      description: The national public awareness campaign on human trafficking, with free training and materials on recognizing the signs and reporting them.
+      description: The DHS Blue Campaign provides free training and public awareness regarding the 
       kind: Training
       url: https://www.dhs.gov/blue-campaign
     - title: Shared Hope International
@@ -79,3 +79,13 @@
       description: A long-running public database of cold missing-person cases in the United States.
       kind: Database
       url: https://charleyproject.org/
+
+- id: crime websites
+  title: True Crime Resources
+  intro: Groups that families and investigators often turn to first.
+  links:
+    - title: Websleuths/Othram
+      by: Othram
+      description: The largest and longest running true crime website. Partnered with Othram, Inc.
+      kind: Forum
+      url: https://www.websleuths.com
